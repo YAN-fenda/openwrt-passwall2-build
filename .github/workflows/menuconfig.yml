@@ -6,6 +6,7 @@ on:
 jobs:
   menuconfig:
     runs-on: ubuntu-latest
+    timeout-minutes: 360  # 防止会话过早终止
 
     steps:
     - name: Checkout
@@ -31,3 +32,6 @@ jobs:
       uses: mxschmitt/action-tmate@v3
       with:
         limit-access-to-actor: true
+
+    - name: Keep session alive
+      run: sleep 6h
